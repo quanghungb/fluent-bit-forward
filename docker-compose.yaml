@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+
+  fluent-bit-shipper:
+    image: fluent/fluent-bit
+    volumes:
+      - ./fluent-bit/fluent-bit-shipper.conf:/fluent-bit/etc/fluent-bit.conf
+      - ./log/system.log:/data/system.log
+      - ./log/server.log:/data/server.log
+      
+    environment:
+      HOSTNAME: "my-host"
+      INSTANCE: "126"
+    depends_on:
+      - fluent-bit-aggregator
+  
+
+  fluent-bit-aggregator:
+    image: fluent/fluent-bit
+    volumes:
+      - ./fluent-bit/fluent-bit-aggregator.conf:/fluent-bit/etc/fluent-bit.conf
+      - ./fluent-bit/parsers_multiline.conf:/fluent-bit/etc/parsers_multiline.conf
+      - ./fluent-bit/storage:/storage
+      - ./fluent-bit/output:/output

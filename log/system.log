@@ -1,0 +1,8 @@
+2024-03-04 01:29:09.533811 INFO Message line 1
+2024-03-04 01:29:09.533811 INFO Message line 2
+2024-03-04 01:29:09.533811 INFO Message line 3
+2024-03-04 01:29:09.533811 INFO Message line 4
+2024-03-04 01:29:09.533811 INFO Message multiline 5
+ subline 5 - 1 
+ subline 5 - 2
+2024-03-04 01:29:09.533811 INFO Message line 6
