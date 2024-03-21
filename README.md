@@ -165,7 +165,7 @@ cd log
 
 ## Observation 
 
-### Issue 1 - Output data does not contain enchired attributes
+### Issue 1 - Output data does not contain enriched attributes
 The shipper has enriched the log with new attributes `instance`, `host`, `source` like below 
 
 ```bash
