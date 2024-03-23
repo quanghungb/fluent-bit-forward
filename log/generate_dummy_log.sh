@@ -1,16 +1,17 @@
-#!/bin/bash 
+#!/bin/bash
 outputfile=$1
-
+nbr_line=${2:-10}
+offset=$(date +%s)
 # loop for simulating log generation -- we don't really care about the timestamp -- the format is the expected one
-for i in {1..150000}
-do 
+for i in $(seq 1 $nbr_line);
+do
+    tsp=$(date +"%Y-%m-%d %H:%M:%S.%6N")
+    idline="${offset}_${i}"
     if ! (( $i % 5 ))
     then
         # simulating some multiline log
-         echo -e "2024-03-04 01:29:09.533811 INFO Message multiline $i\n subline $i - 1 \n subline $i - 2" >> $outputfile
+         echo -e "${tsp} ERROR Message multiline error ${idline}\n subline ${idline} - 1 \n subline ${idline} - 2" >> $outputfile
     else
-         echo "2024-03-04 01:29:09.533811 INFO Message line $i" >> $outputfile
-
+         echo "${tsp} INFO Message line ${idline}" >> $outputfile
     fi
-
 done
