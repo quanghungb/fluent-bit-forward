@@ -147,9 +147,9 @@ But there are some issues with the aggregator **output data**
 
 | Aggregator Configuration | Structured log | Enriched data |
 |-|-|-|
-|Parser in the processor| No | Yes |
-|Parser filter in `filters:` | Yes | No |
-|Parser in the processor and as filter | Yes | No |  
+|Parser only present in the processor| No | Yes |
+|Parser only prensent as filter in `filters:` | Yes | No |
+|Parser present in both part of the processor and as filter | Yes | No |  
 
 
 
