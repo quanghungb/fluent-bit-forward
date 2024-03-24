@@ -6,13 +6,13 @@ The objective is having this following chain
 |fluent-bit-shipper| -> |fluent-bit-aggregator| -> |final destination| 
 
 where we will have 
-* fluent-bit-shipper (see [fluent-bit-shipper.conf](./fluent-bit/fluent-bit-shipper.conf)):
+* fluent-bit-shipper (see [fluent-bit-shipper.yaml](./fluent-bit/fluent-bit-shipper.yaml)):
     * uses `tail` input to ship the log 
-    * uses `record_modifier` filter to enrich the data with the source metadata
-    * displays the data by using `stdout` output for testing purpose
+    * uses the `modify` processor to enrich the data with the source metadata
+    * enable the `stdout` output for testing purpose
     * send the log to the aggregator through `forward` output
 
-* fluent-bit-aggregator(see [fluent-bit-aggregator.conf](./fluent-bit/fluent-bit-aggregator.conf)):
+* fluent-bit-aggregator(see [fluent-bit-aggregator.yaml](./fluent-bit/fluent-bit-aggregator.yaml)):
     * uses `forward` input to receive the log 
     * uses `multiline` filter to parse the multiline log
     * uses `regex` parser to parse the log
