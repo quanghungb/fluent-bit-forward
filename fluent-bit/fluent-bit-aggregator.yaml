@@ -1,0 +1,39 @@
+env:
+  flush_interval: 1
+
+service:
+  log_level: error
+  flush: ${flush_interval}
+  parsers_file: parsers_multiline.conf
+  storage.path: /storage
+
+pipeline:
+  inputs:
+    - name: forward
+      listen: 0.0.0.0
+      port: 24284
+      processors:
+        logs:
+          - name: multiline
+            #Match: "log.*"
+            multiline.parser: multiline-regex-log-with-date-in-timestamp
+            multiline.key_content: log
+            emitter_storage.type: filesystem
+            emitter_mem_buf_limit: 100M
+          - name: parser
+            #Match: "*"
+            Key_Name: log
+            Parser: log-with-date-in-timestamp
+  
+  filters:
+    - name: parser
+      Match: "log.*"
+      Key_Name: log
+      Parser: log-with-date-in-timestamp
+
+  outputs:
+    - name: file
+      Match: "log.*"
+      Path: /output
+    # - name: stdout
+    #   match: "log.*"
