@@ -115,7 +115,8 @@ log.server: [[1711239392.273359423, {}], {"log"=>"2024-03-24 01:16:31.785293 INF
 ```
 
 
-If in the `aggregator` config file, we add the `parser` in `filters` like below: 
+If in the `aggregator` config file, we added the `parser` in `filters` like below. As there are missing data, we tried some configurations and reported the observation.
+
 ```yaml
 pipeline:
   inputs:
