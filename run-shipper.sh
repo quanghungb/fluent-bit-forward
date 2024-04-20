@@ -8,4 +8,4 @@ podman run \
     --net fluent-bit-network \
     --name flb-shipper \
     --rm \
-    fluent/fluent-bit:3.0.0  "/fluent-bit/bin/fluent-bit" "-c" "/fluent-bit/etc/fluent-bit.yaml"
+    fluent/fluent-bit:3.0.2  "/fluent-bit/bin/fluent-bit" "-c" "/fluent-bit/etc/fluent-bit.yaml"

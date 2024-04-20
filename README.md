@@ -31,7 +31,7 @@ That's why we cannot use the [docker-compose.yaml](./docker-compose.yaml). We ha
 
 In that case we have to create a network first 
 ```bash
-podman create network fluent-bit-network
+podman network create fluent-bit-network
 ```
 
 
@@ -105,6 +105,10 @@ cd log
 ```
 
 ## Observation 
+
+**NOTE** With the `v.3.0.2` we can observe the following 
+* running the scenario on a "small" machine (like Macbook Air) everything is working fine: CPU usage stays low, the enriched data are present 
+* runing the scenario on a more powerful machine (workstation) the issues appear like previously
 
 ### Issue 1 - Output data does not contain enriched attributes
 
